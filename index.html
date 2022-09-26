@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BB">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Vue.js</title>
+    </head>
+
+    <body>
+        <div id="hello-word">
+
+            <fieldset>
+                <legend>template</legend>
+                <div v-html="htmlContent"></div>
+                <p>Nome: {{firstName}}</p>
+                <p>Sobrenome: {{lastName}}</p>
+                <p>Idade: {{age}}</p>
+                <p>{{ age >= 18 ? 'Maior de Idade' : 'Menor de idade' }}</p>
+            </fieldset>
+
+            <fieldset>
+                <legend>methods</legend>
+                <button v-on:click="incrementAge">Increment age</button>
+                <button @click="decrementAge">Decrement age</button>
+            </fieldset>
+
+            <fieldset>
+                <legend>computed properts</legend>
+                <p>Nome completo: {{fullName}}</p>
+                <p>Nome completo (por expressão): {{getFullName}}</p>
+            </fieldset>
+
+            <fieldset>
+                <legend>watchers</legend>
+                <label for="input-address">Endereço: </label>
+                <input type="text" id="input-address" v-model="address">
+            </fieldset>
+        </div>
+
+        <script src="https://unpkg.com/vue@3.0.4"></script>
+        <script>
+            const app = {
+                data() {
+                    return {
+                        htmlContent: "<p>Hello World Vue.js</p>",
+                        firstName: "Rafael",
+                        lastName: "Alexandre",
+                        age: 10,
+                        address: ""
+                    }
+                },
+                methods: {
+                    incrementAge: function () {
+                        //console.log(this.age);
+                        this.age++;
+                    },
+                    decrementAge() {
+                        //console.log(this.age);
+                        this.age--;
+                    },
+                    getFullName() {
+                        return `${this.firstName} ${this.lastName}` //Não Armazena em cache
+
+                    }
+                },
+                computed: {
+                    fullName: function () {
+                        return `${this.firstName} ${this.lastName}` //Armazena em cache
+                    }
+                },
+                watch: {
+                    address: function (newValue, oldValue) {
+                        console.log(newValue);
+                        console.log(oldValue);
+                    }
+                }
+
+            }
+
+            const vm = Vue.createApp(app).mount("#hello-word")
+        </script>
+    </body>
+
+</html>
