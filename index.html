@@ -37,6 +37,16 @@
                 <label for="input-address">Endereço: </label>
                 <input type="text" id="input-address" v-model="address">
             </fieldset>
+
+            <fieldset>
+                <legend>v-if</legend>
+                <label for="input-grade">Nota: </label>
+                <input type="text" id="input-grade" v-model="grade">
+                <p v-if="grade < 60 ">Reprovado</p>
+                <p v-else-if="grade >= 60 && grade < 98">Reprovado</p>
+                <p v-else-if="grade >= 98">Aprovado com excelência!</p>
+                <p v-else=>Valor Inválido!</p>
+            </fieldset>
         </div>
 
         <script src="https://unpkg.com/vue@3.0.4"></script>
@@ -48,7 +58,8 @@
                         firstName: "Rafael",
                         lastName: "Alexandre",
                         age: 10,
-                        address: ""
+                        address: "",
+                        grade: 0
                     }
                 },
                 methods: {
