@@ -6,6 +6,11 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Vue.js</title>
+        <style>
+            [v-cloak] {
+                display: none;
+            }
+        </style>
     </head>
 
     <body>
@@ -121,7 +126,17 @@
                     </option>
                 </select>
                 <p>Carro escolhido: {{selectedCar.name}} - {{selectedCar.brand}}</p>
+            </fieldset>
 
+            <fieldset>
+                <legend>v-pre</legend>
+                <p>{{firstName}}</p>
+                <p v-pre>{{firstName}}</p>
+            </fieldset>
+            <fieldset>
+                <legend>v-cloak</legend>
+                <p>{{firstName}}</p>
+                <p v-cloak>{{firstName}}</p>
             </fieldset>
         </div>
 
