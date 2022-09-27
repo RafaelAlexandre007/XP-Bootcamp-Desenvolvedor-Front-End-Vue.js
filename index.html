@@ -86,6 +86,16 @@
                     <li v-for="(value, key, index) in car">{{index}} - {{key}} - {{value}}</li>
                 </ul>
             </fieldset>
+
+            <fieldset>
+                <legend>v-bind</legend>
+                <a v-bind:href="urlIgti" :title="urlIgtiDdescription">IGTI</a>
+                <br>
+                <a :href="urlIgti" v-bind:[argument]="urlIgtiDdescription">IGTI</a>
+                <br>
+                <a :href="urlIgti" title="Clique aqui para acessar o site IGTI">IGTI</a>
+
+            </fieldset>
         </div>
 
         <script src="https://unpkg.com/vue@3.0.4"></script>
@@ -104,7 +114,10 @@
                         count: 1,
                         carBrands: ['VW', 'Fiat', 'Renault'],
                         cars: [{ name: 'KA', brand: 'Ford' }, { name: 'Palio', brand: 'Fiat' }, { name: 'Sandero', brand: 'Renault' }],
-                        car: { name: 'KA', brand: 'Ford', year: 2010, km: 60000 }
+                        car: { name: 'KA', brand: 'Ford', year: 2010, km: 60000 },
+                        urlIgtiDdescription: "Clique aqui para acessar o site IGTI",
+                        urlIgti: "https://www.igti.com.br",
+                        argument: "title"
                     }
                 },
                 methods: {
