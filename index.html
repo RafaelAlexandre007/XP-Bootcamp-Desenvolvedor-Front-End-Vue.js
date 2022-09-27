@@ -96,6 +96,33 @@
                 <a :href="urlIgti" title="Clique aqui para acessar o site IGTI">IGTI</a>
 
             </fieldset>
+
+            <fieldset>
+                <legend>v-model</legend>
+                <label for="input-first-name"></label>
+                <input id="input-first-name" type="text" v-model="firstName">
+                <br />
+                <label for="textarea-html"></label>
+                <textarea v-model="htmlContent" name="" id="textarea-html"></textarea>
+                <br />
+                <label for="checkbox">{{checked}}</label>
+                <input type="checkbox" id="checkbox" v-model="checked">
+                <br>
+                <input type="radio" id="one" value="Um" v-model="selectOption">
+                <label for="one">Um</label>
+                <br>
+                <input type="radio" id="two" value="Dois" v-model="selectOption">
+                <label for="two">Dois</label>
+                <p>Opção escolhida: {{selectOption}}</p>
+                <br>
+                <select v-model="selectedCar">
+                    <option v-for="car in cars" v-bind:value="car">
+                        {{car.name}} - {{car.brand}}
+                    </option>
+                </select>
+                <p>Carro escolhido: {{selectedCar.name}} - {{selectedCar.brand}}</p>
+
+            </fieldset>
         </div>
 
         <script src="https://unpkg.com/vue@3.0.4"></script>
@@ -104,7 +131,7 @@
                 data() {
                     return {
 
-                        htmlContent: "<p>Hello World Vue.js</p>",
+                        htmlContent: "<p style='color: red; font-size: 20px'>Hello World Vue.js</p>",
                         firstName: "Rafael",
                         lastName: "Alexandre",
                         age: 10,
@@ -117,7 +144,11 @@
                         car: { name: 'KA', brand: 'Ford', year: 2010, km: 60000 },
                         urlIgtiDdescription: "Clique aqui para acessar o site IGTI",
                         urlIgti: "https://www.igti.com.br",
-                        argument: "title"
+                        argument: "title",
+                        checked: "false",
+                        selectOption: "",
+                        selectedCar: {}
+
                     }
                 },
                 methods: {
