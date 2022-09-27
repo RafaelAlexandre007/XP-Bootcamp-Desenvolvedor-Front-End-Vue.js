@@ -53,6 +53,39 @@
                 <button v-show="!isUserLogged" @click="isUserLogged = true">Login</button>
                 <button v-show="isUserLogged" @click="isUserLogged = false">Logout</button>
             </fieldset>
+
+            <fieldset>
+                <legend>v-text</legend>
+                <p v-text="firstName"></p>
+            </fieldset>
+
+            <fieldset>
+                <legend>v-html</legend>
+                <p v-html="htmlContent"></p>
+            </fieldset>
+
+            <fieldset>
+                <legend>v-once</legend>
+                <p v-once>{{ count }}</p>
+                <p>{{ count }}</p>
+                <button @click="count++">+</button>
+            </fieldset>
+
+            <fieldset>
+                <legend>v-for</legend>
+                <h4>Marcas</h4>
+                <ul>
+                    <li v-for="brand in carBrands">{{brand}}</li>
+                </ul>
+                <h4>Carros</h4>
+                <ul>
+                    <li v-for="car in cars">{{car.name}} ({{car.brand}})</li>
+                </ul>
+                <h4>Carro</h4>
+                <ul>
+                    <li v-for="(value, key, index) in car">{{index}} - {{key}} - {{value}}</li>
+                </ul>
+            </fieldset>
         </div>
 
         <script src="https://unpkg.com/vue@3.0.4"></script>
@@ -60,13 +93,18 @@
             const app = {
                 data() {
                     return {
+
                         htmlContent: "<p>Hello World Vue.js</p>",
                         firstName: "Rafael",
                         lastName: "Alexandre",
                         age: 10,
                         address: "",
                         grade: 0,
-                        isUserLogged: false
+                        isUserLogged: false,
+                        count: 1,
+                        carBrands: ['VW', 'Fiat', 'Renault'],
+                        cars: [{ name: 'KA', brand: 'Ford' }, { name: 'Palio', brand: 'Fiat' }, { name: 'Sandero', brand: 'Renault' }],
+                        car: { name: 'KA', brand: 'Ford', year: 2010, km: 60000 }
                     }
                 },
                 methods: {
