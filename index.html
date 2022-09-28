@@ -149,12 +149,19 @@
                     <button @click.left="eventMouseTest">Mouse Left</button>
                     <button @click.right.prevent="eventMouseTest">Mouse Right</button>
                     <button @click.middle="eventMouseTest">Mouse Middle</button>
-
+                    <p @mouseenter="eventMouseTest" @mouseleave="eventMouseTest">mouse hover test</p>
+                </div>
+                <div>
+                    <a :href="urlIgti" v-bind:[argument]="urlIgtiDdescription"
+                        @click.prevent="showAlert('blocked')">IGTI</a>
+                    <br>
+                    <a :href="urlIgti" v-bind:[argument]="urlIgtiDdescription"
+                        @click.prevent.once="showAlert('blocked')">IGTI</a>
                 </div>
             </fieldset>
         </div>
 
-        <script src="https://unpkg.com/vue@3.0.4"></script>,
+        <script src="https://unpkg.com/vue@3.0.4"></script>
 
         <script>
             const app = {
@@ -203,6 +210,9 @@
                     },
                     eventMouseTest(event) {
                         console.log(event.type);
+                    },
+                    showAlert(msg) {
+                        alert(msg);
                     }
 
                 },
