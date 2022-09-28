@@ -10,6 +10,14 @@
             [v-cloak] {
                 display: none;
             }
+
+            .text-class-1 {
+                font-style: italic;
+            }
+
+            .text-class-2 {
+                color: blue;
+            }
         </style>
     </head>
 
@@ -166,6 +174,16 @@
                     <p @click.alt="eventTest('alt + ctrl')">alt + Click</p>
                 </div>
             </fieldset>
+
+            <fieldset>
+                <legend>estilos</legend>
+                <p v-bind:style="{ color:  textColor}">inline style object</p>
+                <p :style="textColorObject">inline style object</p>
+                <p class="text-class-1">no class bind</p>
+                <p class="text-class-1" :class="classeTest2">class bind</p>
+                <p :class="classList">class bind list</p>
+                <p :class="[1 > 0 ? classList : classList]">class expression</p>
+            </fieldset>
         </div>
 
         <script src="https://unpkg.com/vue@3.0.4"></script>
@@ -191,7 +209,16 @@
                         argument: "title",
                         checked: "false",
                         selectOption: "",
-                        selectedCar: {}
+                        selectedCar: {},
+                        textColor: "red",
+                        textColorObject: {
+                            color: "green",
+                            fontSize: "25px"
+                        },
+                        classeTest1: "text-class-1",
+                        classeTest2: "text-class-2",
+                        classList: ["text-class-1", "text-class-2"]
+
 
                     }
                 },
