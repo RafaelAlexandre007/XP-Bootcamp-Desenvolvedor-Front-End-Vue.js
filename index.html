@@ -158,6 +158,13 @@
                     <a :href="urlIgti" v-bind:[argument]="urlIgtiDdescription"
                         @click.prevent.once="showAlert('blocked')">IGTI</a>
                 </div>
+                <div>
+                    <input @keyup.enter="eventKeyTest" placeholder="Press Enter">
+                    <input @keyup.delete="eventKeyTest" placeholder="Press Delete">
+                    <input @keyup.space="eventKeyTest" placeholder="Press Space">
+                    <br>
+                    <p @click.alt="eventTest('alt + ctrl')">alt + Click</p>
+                </div>
             </fieldset>
         </div>
 
@@ -213,6 +220,10 @@
                     },
                     showAlert(msg) {
                         alert(msg);
+                    },
+                    eventKeyTest(event) {
+                        console.log(event.key, event.type);
+
                     }
 
                 },
