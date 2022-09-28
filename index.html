@@ -138,9 +138,24 @@
                 <p>{{firstName}}</p>
                 <p v-cloak>{{firstName}}</p>
             </fieldset>
+
+            <fieldset>
+                <legend>eventos</legend>
+                <div>
+                    <button v-on:click="eventTest('click')">On Click</button>
+                    <button v-on:click="eventTest">On Click event param onclick implicit</button>
+                    <button @click="eventTestParam('@click', $event)">On click event param explicit</button>
+                    <button @dblclick="eventTest('dbl click')">On double click </button>
+                    <button @click.left="eventMouseTest">Mouse Left</button>
+                    <button @click.right.prevent="eventMouseTest">Mouse Right</button>
+                    <button @click.middle="eventMouseTest">Mouse Middle</button>
+
+                </div>
+            </fieldset>
         </div>
 
-        <script src="https://unpkg.com/vue@3.0.4"></script>
+        <script src="https://unpkg.com/vue@3.0.4"></script>,
+
         <script>
             const app = {
                 data() {
@@ -178,7 +193,18 @@
                     getFullName() {
                         return `${this.firstName} ${this.lastName}` //Não Armazena em cache
 
+                    },
+                    eventTest(nome) {
+                        console.log(name);
+                    },
+                    eventTestParam(name, event) {
+                        console.log(name, event);
+
+                    },
+                    eventMouseTest(event) {
+                        console.log(event.type);
                     }
+
                 },
                 computed: {
                     fullName: function () {
